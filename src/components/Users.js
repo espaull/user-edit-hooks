@@ -5,14 +5,8 @@ import User from './User';
 const Users = () => {
   const [users, setUsers] = useState([]);
 
-  const updateUser = user => {
-    const copy = users.slice();
-
-    for (let i = 0; i < copy.length; i++) {
-      if (copy[i].id === user.id) {
-        copy[i] = user;
-      }
-    }
+  const updateUser = newUser => {
+    const copy = users.map(user => (user.id === newUser.id ? newUser : user));
 
     setUsers(copy);
   };
