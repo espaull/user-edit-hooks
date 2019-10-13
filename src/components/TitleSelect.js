@@ -1,17 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const TitleSelect = ({ currentTitle, updateField }) => {
   const titles = ['Mr', 'Mrs', 'Miss', 'Dr', 'Prof'];
 
   return (
-    <select value={currentTitle} onChange={evt => updateField(evt, 'title')}>
+    <Select value={currentTitle} onChange={evt => updateField(evt, 'title')}>
       {titles.map(title => (
         <option key={title} value={title}>
           {title}
         </option>
       ))}
-    </select>
+    </Select>
   );
 };
 
 export default TitleSelect;
+
+const Select = styled.select`
+  margin-left: 15px;
+`;

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import TitleSelect from './TitleSelect';
+import DateSelect from './DateSelect';
 
 const UserEdit = ({ toggleEditMode, user, updateUser }) => {
   const [userData, setUserData] = useState({ ...user });
 
-  const updateField = (evt, property) => {
-    setUserData({ ...userData, [property]: evt.target.value });
+  const updateField = (evt, property, value) => {
+    setUserData({ ...userData, [property]: value ? value : evt.target.value });
   };
 
   const saveUser = evt => {
@@ -38,6 +39,10 @@ const UserEdit = ({ toggleEditMode, user, updateUser }) => {
           value={userData.lastName}
           onChange={evt => updateField(evt, 'lastName')}
         />
+      </Label>
+      <Label>
+        Date of Birth
+        <DateSelect currentDob={userData.dob} updateField={updateField} />
       </Label>
       <button type="submit">Save</button>
     </form>
